@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+}
+/* The section containing the title and search bar */
+.hero{
+    background: url(./images/pattern-bg-desktop.png);
+    background-repeat:round;
+    height: 200px;
+    text-align: center;
+    padding-top: 30px;
+}
+/* Ip Address Tracker title */
+.hero h1{
+    color: white;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+/* div containing the ip-search input 
+used reative positioning for input and img*/
+.ip-search-container {
+    position: relative;
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 1em;
+    background-color: white;
+}
+/* Search button */
+#ip-input{
+    width: 100%;
+    height: 3em;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+/* search arrow */
+#ip-arrow{
+    background-color: black;
+    padding: 1.3em;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    cursor: pointer;
+}
+#ip-arrow:hover{
+    background-color: hsl(0, 0%, 17%);
+}
