@@ -26,21 +26,26 @@
 
   <div class="ip-search-container">
     <input type="text" placeholder="Search for any IP address or domain" id="ip-input">
-    <img src="./images/icon-arrow.svg" alt="search-arrow" id="ip-arrow">
+    <img src="./images/icon-arrow.svg" alt="search-arrow" id="ip-arrow" onclick="myFunction()">
   </div>
+  <h3 id="ip-error">Please input a valid IP address</h3>
   <section class="tracked-ip">
   <div>
-    <p>IP Address</p>
+    <p class="ip-placeholder">IP Address</p>
+    <p id="ip-Address"></p>
   </div>
   <div>
-    <p>Location</p>
+    <p class="ip-placeholder">Location</p>
+    <p id="ip-Location"></p>
+    <p id="ip-postalCode"></p> <!-- add postal code dynamically using the API -->
   </div>
   <div>
-    <p>Timezone</p>
-    <p>UTC</p> <!-- add offset value dynamically using the API -->
+    <p class="ip-placeholder">Timezone</p>
+    <p id="ip-Timezone"></p> <!-- add offset value dynamically using the API -->
   </div>
   <div>
-    <p>ISP</p>
+    <p class="ip-placeholder">ISP</p>
+    <p id="ip_ISP"></p>
   </div>
   </section>
   </section>

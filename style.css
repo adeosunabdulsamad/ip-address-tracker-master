@@ -47,6 +47,11 @@ used reative positioning for input and img*/
 #ip-arrow:hover{
     background-color: hsl(0, 0%, 17%);
 }
+/* error message if ip-address is invalid */
+#ip-error{
+    display: none;
+    color: rgb(145, 48, 48);
+}
 /* information gotten from the api */
 .tracked-ip{
     position: absolute;
@@ -61,14 +66,28 @@ used reative positioning for input and img*/
     border: 2px solid black;
     border-radius: 0.25em;
     padding: 10px;
-    z-index: 1000;
+    z-index: 1000; /*makes our ip info visible*/
 }
+/* The paragraphs showing ip api info on the page */
+.tracked-ip p{
+    color: black;
+    font-size: 45px;
+    margin-bottom: 5px;
+}
+/* The paragraphs showing ip placeholder info on the page */
+.tracked-ip p.ip-placeholder{
+    color: hsl(0, 0%, 58%);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+/*The divs displaying the ip information on the page */
 .tracked-ip div{
     display: flex;
     flex-direction: column;
     text-align: left;
+    border-right: 1px solid hsl(0, 0%, 58%) ;
 }
-
+/* map gotten from leafletjs api */
 #map{
     height: 400px;
 }
