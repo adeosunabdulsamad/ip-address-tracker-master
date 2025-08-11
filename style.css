@@ -78,7 +78,7 @@ used reative positioning for input and img*/
     top: 80%;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
+    width: 70%;
     background-color: white;
     height: 40%;
     display: flex;
@@ -91,7 +91,7 @@ used reative positioning for input and img*/
 .tracked-ip p{
     color: black;
     font-size: 20px;
-    margin-top: 1em;
+    margin-top: 5%;
     margin-bottom: 0;
     text-align: left;
     font-weight: bold;
@@ -145,8 +145,19 @@ used reative positioning for input and img*/
 }
 /* For devices < 500px */
 @media (max-width: 500px) {
+    #ip-input::placeholder {
+        font-size: 13px;
+        font-weight: bold;
+    }
+    .hero {
+        height: 45%;
+    }
+    #map {
+        height: 70%;
+    }
     .tracked-ip {
         flex-direction: column;
+        top: 80%;
         width: 85%;
         height: 100%;
     }
