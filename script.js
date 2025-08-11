@@ -22,11 +22,21 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
 window.addEventListener('DOMContentLoaded', function() {
-    ipAddress.textContent = "192.212.174.101";
-    ipLocation.textContent = "Brooklyn, NY 10001";
-    ipTimezone.textContent = "UTC -05:00";
-    ipISP.textContent = "SpaceX Starlink";
-    marker = L.marker([40.7128, -74.0060], {icon: locationIcon}).addTo(map);
+    fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        ipAddress.textContent = data.ip;
+        // Fetch location data using the IP address
+        fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_ejhYewfqwtYccU94h8y3BgoFbfhs9&ipAddress=${data.ip}`)
+            .then(response => response.json())
+            .then(locationData => {
+                ipLocation.textContent = locationData.location ? `${locationData.location.country}, ${locationData.location.region} ${locationData.location.postalCode}` : 'N/A';
+                ipTimezone.textContent = locationData.location ? `UTC ${locationData.location.timezone}` : 'N/A';
+                ipISP.textContent = locationData.isp || 'N/A';
+                map.setView([locationData.location.lat, locationData.location.lng], 13);
+                marker = L.marker([locationData.location.lat, locationData.location.lng], {icon: locationIcon}).addTo(map);
+            });
+    });
 });
 
 
