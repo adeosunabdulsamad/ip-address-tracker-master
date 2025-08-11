@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Screenshot
 
-[](./images/MacBook%20Pro-1754952516301.jpeg)
+![Screenshot](./images/MacBook%20Pro-1754952516301.png)
 
 
 ### Links
