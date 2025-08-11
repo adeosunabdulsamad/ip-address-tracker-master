@@ -6,6 +6,7 @@ let ipTimezone = document.getElementById("ip-Timezone");
 let ipISP = document.getElementById("ip_ISP");
 const ipRegex = /^(?:(?:\d{1,3}\.){3}\d{1,3}|(?:[A-Fa-f0-9]{1,4}:){7}[A-Fa-f0-9]{1,4})$/;
 let currentIpifyUrl;
+let marker; // Declare marker globally
 let locationIcon = L.icon({
     iconUrl: './images/icon-location.svg',
 
@@ -13,11 +14,22 @@ let locationIcon = L.icon({
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
-let map = L.map('map').setView([51.505, -0.09], 13);
+let map = L.map('map').setView([40.7128, -74.0060], 13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    ipAddress.textContent = "192.212.174.101";
+    ipLocation.textContent = "Brooklyn, NY 10001";
+    ipTimezone.textContent = "UTC -05:00";
+    ipISP.textContent = "SpaceX Starlink";
+    marker = L.marker([40.7128, -74.0060], {icon: locationIcon}).addTo(map);
+});
+
+
 function myFunction() {
     let ipInput = document.getElementById("ip-input");
     if (!ipRegex.test(ipInput.value)) {
@@ -26,7 +38,6 @@ function myFunction() {
     }
     ipErrorMessage.style.display = "none";
     currentIpifyUrl = ipifyUrl + ipInput.value;
-    console.log(currentIpifyUrl);
     fetch(currentIpifyUrl)
         .then(response => {
             if(!response.ok) {
@@ -41,7 +52,12 @@ function myFunction() {
             ipTimezone.textContent = data.location ? `UTC ${data.location.timezone}` : 'N/A';
             ipISP.textContent = data.isp || 'N/A';
             map.setView([data.location.lat, data.location.lng], 13);
-            let marker = L.marker([data.location.lat, data.location.lng], {icon: locationIcon}).addTo(map);
+            
+            // Remove existing marker before adding new one
+            if (marker) {
+                map.removeLayer(marker);
+            }
+            marker = L.marker([data.location.lat, data.location.lng], {icon: locationIcon}).addTo(map);
         })
         .catch(error => {
             console.log('There was an error', error);

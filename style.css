@@ -2,6 +2,11 @@
     margin: 0;
     font-family: "Rubik", sans-serif;
 }
+:root {
+    --primary-color: hsl(0, 0%, 17%);
+    --secondary-color: hsl(0, 0%, 58%);
+    --error-color: rgb(145, 48, 48);
+}
 body {
     height: 100vh;
     display: flex;
@@ -60,12 +65,12 @@ used reative positioning for input and img*/
     cursor: pointer;
 }
 #ip-arrow:hover{
-    background-color: hsl(0, 0%, 17%);
+    background-color: var(--primary-color);
 }
 /* error message if ip-address is invalid */
 #ip-error{
     display: none;
-    color: rgb(145, 48, 48);
+    color: var(--error-color);
 }
 /* information gotten from the api */
 .tracked-ip{
@@ -77,7 +82,7 @@ used reative positioning for input and img*/
     background-color: white;
     height: 40%;
     display: flex;
-    border: 1px solid hsl(0, 0%, 17%);
+    border: 1px solid var(--primary-color);
     border-radius: 0.5em;
     padding: 10px;
     z-index: 1000; /*makes our ip info visible*/
@@ -89,10 +94,11 @@ used reative positioning for input and img*/
     margin-top: 1em;
     margin-bottom: 0;
     text-align: left;
+    font-weight: bold;
 }
 /* The paragraphs showing ip placeholder info on the page */
 .tracked-ip p.ip-placeholder{
-    color: hsl(0, 0%, 58%);
+    color: var(--secondary-color);
     font-size: 14px;
 }
 /*The divs displaying the ip information on the page */
@@ -103,8 +109,8 @@ used reative positioning for input and img*/
     width: 25%;
 }
 .vertical-separator {
-  border-left: 1px solid hsl(0, 0%, 58%); /* or border-right */
-  height: 100%; /* Adjust the height as needed */
+  border-left: 1px solid var(--secondary-color); /* or border-right */
+  height: 80%; /* Adjust the height as needed */
   display: inline-block; /* or block, depending on layout */
   margin: 0 10px; /* Adjust spacing around the line */
    /* Align if using inline-block */
@@ -112,4 +118,42 @@ used reative positioning for input and img*/
 /* map gotten from leafletjs api */
 #map{
     height: 70%;
+}
+/*For devices < 768px */
+@media (max-width: 768px) {
+    .tracked-ip {
+        flex-direction: column;
+        top: 60%;
+        height: 70%;
+        padding: none;
+    }
+    .ip-search-container {
+        width: 60%;
+    }
+    .tracked-ip div {
+        width: 100%;
+        height: 23%;
+        text-align: center;
+    }
+    .tracked-ip p {
+        text-align: center;
+        margin-top: 1%;
+    }
+    .vertical-separator {
+        display: none; /* Hide vertical separator on small screens */
+    }
+}
+/* For devices < 500px */
+@media (max-width: 500px) {
+    .tracked-ip {
+        flex-direction: column;
+        width: 85%;
+        height: 100%;
+    }
+    .ip-search-container {
+        width: 85%;
+    }
+    #map {
+        height: 100%;
+    }
 }
