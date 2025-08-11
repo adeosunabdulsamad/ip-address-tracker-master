@@ -13,6 +13,7 @@ body {
     height: 30%;
     text-align: center;
     padding-top: 30px;
+    position: relative;
 }
 /* Ip Address Tracker title */
 .hero h1{
@@ -69,12 +70,12 @@ used reative positioning for input and img*/
 /* information gotten from the api */
 .tracked-ip{
     position: absolute;
-    top: 12em;
+    top: 80%;
     left: 50%;
     transform: translateX(-50%);
     width: 60%;
     background-color: white;
-    height: 6em;
+    height: 40%;
     display: flex;
     border: 1px solid hsl(0, 0%, 17%);
     border-radius: 0.5em;
@@ -103,7 +104,7 @@ used reative positioning for input and img*/
 }
 .vertical-separator {
   border-left: 1px solid hsl(0, 0%, 58%); /* or border-right */
-  height: 5em; /* Adjust the height as needed */
+  height: 100%; /* Adjust the height as needed */
   display: inline-block; /* or block, depending on layout */
   margin: 0 10px; /* Adjust spacing around the line */
    /* Align if using inline-block */
