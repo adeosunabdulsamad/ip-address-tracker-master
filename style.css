@@ -2,11 +2,15 @@
     margin: 0;
     font-family: "Rubik", sans-serif;
 }
-/* The section containing the title and search bar */
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 .hero{
     background: url(./images/pattern-bg-desktop.png);
     background-repeat:round;
-    height: 13em;
+    height: 30%;
     text-align: center;
     padding-top: 30px;
 }
@@ -19,13 +23,13 @@
 /* div containing the ip-search input 
 used reative positioning for input and img*/
 .ip-search-container {
-    position: relative;
     display: flex;
     width: 40%;
     margin: 0 auto;
     border: 1px solid black;
     border-radius: 1em;
     background-color: white;
+    overflow: hidden; /* This helps maintain border radius */
 }
 /* Search button */
 #ip-input{
@@ -35,6 +39,16 @@ used reative positioning for input and img*/
     border: none;
     outline: none;
     background-color: transparent;
+    border-radius: 1em 0 0 1em; /* Add border radius to input itself */
+    padding-left: 1em; /* Add some padding */
+}
+
+/* Disable autocomplete styling that interferes with border radius */
+#ip-input:-webkit-autofill,
+#ip-input:-webkit-autofill:hover,
+#ip-input:-webkit-autofill:focus {
+    border-radius: 1em 0 0 1em !important;
+    -webkit-box-shadow: inset 0 0 0 1000px white !important;
 }
 /* search arrow */
 #ip-arrow{
@@ -58,36 +72,43 @@ used reative positioning for input and img*/
     top: 12em;
     left: 50%;
     transform: translateX(-50%);
-    width: 70%;
+    width: 60%;
     background-color: white;
-    height: 5em;
+    height: 6em;
     display: flex;
-    justify-content: space-between;
-    border: 2px solid black;
-    border-radius: 0.25em;
+    border: 1px solid hsl(0, 0%, 17%);
+    border-radius: 0.5em;
     padding: 10px;
     z-index: 1000; /*makes our ip info visible*/
 }
 /* The paragraphs showing ip api info on the page */
 .tracked-ip p{
     color: black;
-    font-size: 45px;
-    margin-bottom: 5px;
+    font-size: 20px;
+    margin-top: 1em;
+    margin-bottom: 0;
+    text-align: left;
 }
 /* The paragraphs showing ip placeholder info on the page */
 .tracked-ip p.ip-placeholder{
     color: hsl(0, 0%, 58%);
     font-size: 14px;
-    margin-bottom: 5px;
 }
 /*The divs displaying the ip information on the page */
 .tracked-ip div{
     display: flex;
     flex-direction: column;
     text-align: left;
-    border-right: 1px solid hsl(0, 0%, 58%) ;
+    width: 25%;
+}
+.vertical-separator {
+  border-left: 1px solid hsl(0, 0%, 58%); /* or border-right */
+  height: 5em; /* Adjust the height as needed */
+  display: inline-block; /* or block, depending on layout */
+  margin: 0 10px; /* Adjust spacing around the line */
+   /* Align if using inline-block */
 }
 /* map gotten from leafletjs api */
 #map{
-    height: 400px;
+    height: 70%;
 }
